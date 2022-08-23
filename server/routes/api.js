@@ -27,16 +27,44 @@ router.post("/bins", (req, res, next) => {
     .catch((err) => next(err));
 });
 
-
 // Deletes a Bin
 router.delete("/bins/:id", (req, res, next) => {
   const binId = req.params.id
-  console.log('within the Delete Route')
   Bin.findByIdAndRemove(binId)
-    .then(bin => {
-      res.json(`Successfully Deleted Bin: ${bin.url}`);
-    })
+    .then(bin => res.json(`Successfully Deleted Bin: ${bin.url}`))
     .catch((err) => next(err));
 });
+
+// Deletes All Bins
+router.delete("/bins", (req, res, next) => {
+  Bin.deleteMany({})
+    .then(() => res.json(`Successfully Deleted All Bins`))
+    .catch((err) => next(err));
+})
+
+// Adds a Request to a Bin
+router.post("/bins/:url", async (req, res, next) => {
+  const url = req.params.url
+
+  const headers = req.headers;
+  const method = req.method;
+  const body = req.body;
+
+  // Fetch the binId based on the URL
+  let binId;
+  await Bin.findOne({ url })
+    .then(bin => {
+      binId = bin.id
+    })
+  
+  // Create the Request Information
+  Request.create({ binId, headers, method, body })
+    .then(request => {
+      // Add the Request to the Bin Request Array
+      Bin.findByIdAndUpdate(request.binId, { $push: {requests: request._id }}, () => {})
+      res.json(request)
+    })
+    .catch((err) => next(err));
+})
 
 module.exports = router;

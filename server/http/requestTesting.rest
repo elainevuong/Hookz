@@ -1,0 +1,11 @@
+### Gets All Bins
+GET http://localhost:3000/api/bins HTTP/1.1
+
+### Creates a Request
+POST http://localhost:3000/api/bins/gradual_harlequin_dragonfly HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}

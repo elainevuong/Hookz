@@ -3,8 +3,15 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const { ObjectId } = Schema.Types;
+
 const RequestSchema = new Schema(
   {
+    binId: {
+      type: ObjectId,
+      ref: "Bin",
+      required: true,
+    },
     method: {
       type: Object,
     },
@@ -14,9 +21,9 @@ const RequestSchema = new Schema(
     body: {
       type: Object,
     },
-    raw: {
-      type: Object,
-    },
+    // raw: {
+    //   type: Object,
+    // },
   },
   { timestamps: true }
 );
