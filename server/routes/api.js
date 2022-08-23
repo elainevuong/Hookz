@@ -1,8 +1,8 @@
 const express = require("express");
-const router = express.Router();
+const { uniqueNamesGenerator, adjectives, colors, animals } = require('unique-names-generator');
 const Bin = require("../models/bin")
 const Request = require("../models/request")
-const { uniqueNamesGenerator, adjectives, colors, animals } = require('unique-names-generator');
+const router = express.Router();
 
 // Gets All Bins
 router.get('/bins', (req, res, next) => {
@@ -12,7 +12,7 @@ router.get('/bins', (req, res, next) => {
 })
 
 // Gets A Bin By Id
-router.get('/bins:id', (req, res, next) => {
+router.get("/bins/:id", (req, res, next) => {
   const binId = req.params.id
   Bin.findById(binId)
     .then(bin => res.json(bin))
@@ -31,9 +31,10 @@ router.post("/bins", (req, res, next) => {
 // Deletes a Bin
 router.delete("/bins/:id", (req, res, next) => {
   const binId = req.params.id
+  console.log('within the Delete Route')
   Bin.findByIdAndRemove(binId)
-    .then(() => {
-      res.json();
+    .then(bin => {
+      res.json(`Successfully Deleted Bin: ${bin.url}`);
     })
     .catch((err) => next(err));
 });
