@@ -1,22 +1,22 @@
-// Creates the Request Schema
+// Creates the Bin Schema
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const RequestSchema = new Schema(
+const { ObjectId } = Schema.Types;
+
+const BinSchema = new Schema(
   {
-    method: {
-      type: Object,
+    title: {
+      type: String,
+      required: true,
     },
-    headers: {
-      type: Object,
-    },
-    body: {
-      type: Object,
-    },
-    raw: {
-      type: Object,
-    },
+    requests: [
+      {
+        type: ObjectId,
+        ref: 'Request',
+      }
+    ],
   },
   { timestamps: true }
 );
@@ -29,5 +29,5 @@ requestSchema.set('toJSON', {
   }
 })
 
-const Request = mongoose.model("Request", RequestSchema);
-module.exports = Request;
+const Bin = mongoose.model("Bin", BinSchema);
+module.exports = Bin;
