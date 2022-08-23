@@ -1,0 +1,5 @@
+### Creates a Bin
+POST http://localhost:3000/api/bins HTTP/1.1
+
+### Gets All Bins
+GET http://localhost:3000/api/bins HTTP/1.1

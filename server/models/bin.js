@@ -7,7 +7,7 @@ const { ObjectId } = Schema.Types;
 
 const BinSchema = new Schema(
   {
-    title: {
+    url: {
       type: String,
       required: true,
     },
@@ -21,7 +21,7 @@ const BinSchema = new Schema(
   { timestamps: true }
 );
 
-requestSchema.set('toJSON', {
+BinSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString()
     delete returnedObject._id
