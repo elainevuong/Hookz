@@ -30,8 +30,14 @@ router.post("/bins", (req, res, next) => {
 // Deletes a Bin
 router.delete("/bins/:id", (req, res, next) => {
   const binId = req.params.id
-  Bin.findByIdAndRemove(binId)
-    .then(bin => res.json(`Successfully Deleted Bin: ${bin.url}`))
+
+  // Deletes all Requests for a Bin
+  Request.deleteMany({ binId })
+    .then(() => {
+      // Deletes the Bin
+      Bin.findByIdAndRemove(binId)
+        .then(bin => res.json(`Successfully Deleted Bin: ${bin.url}`))
+    })
     .catch((err) => next(err));
 });
 
@@ -65,6 +71,34 @@ router.post("/bins/:url", async (req, res, next) => {
       res.json(request)
     })
     .catch((err) => next(err));
+})
+
+// Gets All Requests For a Bin
+router.get("/bins/requests/:url", async (req, res, next) => { 
+  const url = req.params.url
+  let binId;
+  await Bin.findOne({ url })
+    .then(bin => {
+      binId = bin.id
+    })
+
+  Request.find({ binId })
+    .then(requests => res.json(requests))
+    .catch((err) => next(err));
+})
+
+// Gets All Requests
+router.get('/requests', (req, res, next) => {
+  Request.find({})
+    .then(requests => res.json(requests))
+    .catch(next);
+})
+
+// Delete All Requests
+router.delete('/requests', (req, res, next) => {
+  Request.deleteMany({})
+    .then(() => res.json(`Successfully Deleted All Requests`))
+    .catch(next);
 })
 
 module.exports = router;

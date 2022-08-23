@@ -2,10 +2,19 @@
 GET http://localhost:3000/api/bins HTTP/1.1
 
 ### Creates a Request
-POST http://localhost:3000/api/bins/gradual_harlequin_dragonfly HTTP/1.1
+POST http://localhost:3000/api/bins/disciplinary_lime_spoonbill HTTP/1.1
 content-type: application/json
 
 {
     "name": "sample",
     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
 }
+
+### Gets All Requests For a Bin
+GET http://localhost:3000/api/bins/requests/necessary_blush_bobcat HTTP/1.1
+
+### Gets All Requests
+GET http://localhost:3000/api/requests HTTP/1.1
+
+### Deletes All Requests
+DELETE http://localhost:3000/api/requests HTTP/1.1
