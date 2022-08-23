@@ -5,14 +5,14 @@ const Request = require("../models/request")
 const { uniqueNamesGenerator, adjectives, colors, animals } = require('unique-names-generator');
 
 // Gets All Bins
-router.get('/bins', (req, res) => {
+router.get('/bins', (req, res, next) => {
   Bin.find({})
     .then(bins => res.json(bins))
     .catch(next);
 })
 
 // Gets A Bin By Id
-router.get('/bins:id', (req, res) => {
+router.get('/bins:id', (req, res, next) => {
   const binId = req.params.id
   Bin.findById(binId)
     .then(bin => res.json(bin))
