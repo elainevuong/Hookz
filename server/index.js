@@ -25,7 +25,6 @@ app.post('/', (req, res) => {
   console.log(req.body)
 })
 
-
 app.use("/api", apiRoutes);
 
 // Default Error Handling - logs the error
