@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from "react";
 import { Button } from '@mui/material';
 
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { createBin } from '../features/bins';
 
 import Title from './Title';
@@ -33,29 +33,16 @@ const CreateBinsContainer = () => {
 
 }
 
-const BinCreatedSuccessfully = (newBin) => {
+const BinCreatedSuccessfully = () => {
+  const bins = useSelector(state => state.bins)
+
   return (
-    <div align="center">{`New Bin Created!`}</div>
+    <React.Fragment>
+      <div align="center">{`Success! New Bin Created!`}</div>
+      <br></br>
+      <Button variant="outlined">Copy Bin URL</Button>
+    </React.Fragment>
   )
 }
 
 export default CreateBinsContainer
-
-// export default function Deposits() {
-//   return (
-//     <React.Fragment>
-//       <Title>Recent Deposits</Title>
-//       <Typography component="p" variant="h4">
-//         $3,024.00
-//       </Typography>
-//       <Typography color="text.secondary" sx={{ flex: 1 }}>
-//         on 15 March, 2019
-//       </Typography>
-//       <div>
-//         <Link color="primary" href="#" onClick={preventDefault}>
-//           View balance
-//         </Link>
-//       </div>
-//     </React.Fragment>
-//   );
-// }
