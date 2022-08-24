@@ -1,32 +1,42 @@
 import * as React from 'react';
-// import { useTheme } from '@mui/material/styles';
-import { Container } from '@mui/material';
+import { Container, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
 import Title from './Title';
 
-// Generate Sales Data
-function createData(time, amount) {
-  return { time, amount };
-}
-
-const data = [
-  createData('00:00', 0),
-  createData('03:00', 300),
-  createData('06:00', 600),
-  createData('09:00', 800),
-  createData('12:00', 1500),
-  createData('15:00', 2000),
-  createData('18:00', 2400),
-  createData('21:00', 2400),
-  createData('24:00', undefined),
-];
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchBins } from '../features/bins';
 
 const BinsContainer = () => {
-  // const theme = useTheme();
+  const dispatch = useDispatch();
 
+  const bins = useSelector(state => state.bins)
+
+  useEffect(() => {
+    dispatch(fetchBins())
+  }, [dispatch])
+
+  console.log(bins)
   return (
     <React.Fragment>
+      <Container>
       <Title>Display All Bins</Title>
-      <Container />
+        <Table size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell>Title</TableCell>
+              <TableCell>Number of Requests</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {bins.map(bin => (
+              <TableRow key={bin.id}>
+                <TableCell>{bin.url}</TableCell>
+                <TableCell>{bin.requests.length}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Container>
     </React.Fragment>
   );
 }
