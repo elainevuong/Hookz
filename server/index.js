@@ -14,17 +14,10 @@ mongoose.connect(process.env.DB)
 
 // Load Homepage
 app.get('/', (req, res) => {
-  console.log(req)
   res.send('Hello!')
 })
 
-// Accepts POST Requests using Ngrok Tunnel
-app.post('/', (req, res) => {
-  console.log(req.headers)
-  console.log(req.method)
-  console.log(req.body)
-})
-
+// Takes the Express Router into Use as Middleware
 app.use("/api", apiRoutes);
 
 // Default Error Handling - logs the error
