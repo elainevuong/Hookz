@@ -38,7 +38,7 @@ const BinCreatedSuccessfully = () => {
 
   return (
     <React.Fragment>
-      <div align="center">{`Success! New Bin Created!`}</div>
+      <div align="center">{`Success! Bin ${bins[0].url} Created!`}</div>
       <br></br>
       <Button variant="outlined">Copy Bin URL</Button>
     </React.Fragment>
