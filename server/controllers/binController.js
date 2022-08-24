@@ -5,6 +5,7 @@ const Request = require("../models/request")
 // Gets All Bins
 const getAllBins = (req, res, next) => {
   Bin.find({})
+    .sort({ updatedAt: -1})
     .then(bins => res.json(bins))
     .catch(next);
 }

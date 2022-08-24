@@ -33,15 +33,15 @@ const BinsContainer = () => {
             <TableRow>
               <TableCell>Title</TableCell>
               <TableCell>Number of Requests</TableCell>
-              <TableCell align="center">Delete</TableCell>
+              <TableCell>Delete</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {bins.map(bin => (
               <TableRow key={bin.id}>
                 <TableCell>{bin.url}</TableCell>
-                <TableCell align='justify'>{bin.requests.length}</TableCell>
-                <TableCell align="center">
+                <TableCell>{bin.requests.length}</TableCell>
+                <TableCell>
                   <Button onClick={() => handleDeleteBin(bin)}>
                   <DeleteForeverIcon 
                     sx={{ color: red[500] }}

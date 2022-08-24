@@ -4,6 +4,7 @@ const Request = require("../models/request")
 // Gets All Requests
 const getAllRequests = (req, res, next) => {
   Request.find({})
+    .sort({ updatedAt: -1})
     .then(requests => res.json(requests))
     .catch(next);
 }
@@ -31,7 +32,7 @@ const addRequest = async (req, res, next) => {
     })
   
   // Create the Request Information
-  Request.create({ binId, headers, method, body })
+  Request.create({ binId, url, headers, method, body })
     .then(request => {
       // Add the Request to the Bin Request Array
       Bin.findByIdAndUpdate(request.binId, { $push: {requests: request._id }}, () => {})

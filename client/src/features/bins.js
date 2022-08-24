@@ -41,7 +41,8 @@ const binsSlice = createSlice({
     })
     builder.addCase(createBin.fulfilled, (state, action) => {
       const createdBin = action.payload
-      return state.concat(createdBin)
+      state.unshift(createdBin)
+      return state
     })
   }
 })

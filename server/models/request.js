@@ -12,10 +12,13 @@ const RequestSchema = new Schema(
       ref: "Bin",
       required: true,
     },
-    method: {
-      type: Object,
+    url: {
+      type: String,
     },
     headers: {
+      type: Object,
+    },
+    method: {
       type: Object,
     },
     body: {

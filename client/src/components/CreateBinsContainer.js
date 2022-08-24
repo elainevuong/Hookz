@@ -17,7 +17,6 @@ const CreateBinsContainer = () => {
     dispatch(createBin())
   }
 
-
   return (
     <React.Fragment>
       <Title>Create New Bin</Title>
