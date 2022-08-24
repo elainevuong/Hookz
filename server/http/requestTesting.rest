@@ -1,8 +1,8 @@
 ### Gets All Bins
-GET http://localhost:3000/api/bins HTTP/1.1
+GET http://localhost:3001/api/bins HTTP/1.1
 
 ### Creates a Request
-POST http://localhost:3000/api/bins/resident_amaranth_woodpecker HTTP/1.1
+POST http://localhost:3001/api/bins/changing_blush_viper HTTP/1.1
 content-type: application/json
 
 {
@@ -11,10 +11,10 @@ content-type: application/json
 }
 
 ### Gets All Requests For a Bin
-GET http://localhost:3000/api/bins/requests/necessary_blush_bobcat HTTP/1.1
+GET http://localhost:3001/api/bins/requests/necessary_blush_bobcat HTTP/1.1
 
 ### Gets All Requests
-GET http://localhost:3000/api/requests HTTP/1.1
+GET http://localhost:3001/api/requests HTTP/1.1
 
 ### Deletes All Requests
-DELETE http://localhost:3000/api/requests HTTP/1.1
+DELETE http://localhost:3001/api/requests HTTP/1.1
