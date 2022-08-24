@@ -10,10 +10,15 @@ const deleteBin = async (binId) => {
   return response.data
 }
 
+const createBin = async () => {
+  const response = await axios.post('/api/bins')
+  return response.data
+}
+
 const fetchRequests = async () => {
   const response = await axios.get('/api/requests')
   return response.data;
 }
 
-const apiClient = { fetchBins, deleteBin, fetchRequests }
+const apiClient = { fetchBins, deleteBin, createBin, fetchRequests }
 export default apiClient

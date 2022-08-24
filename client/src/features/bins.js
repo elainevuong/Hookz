@@ -9,6 +9,14 @@ export const fetchBins = createAsyncThunk(
   }
 )
 
+export const createBin = createAsyncThunk(
+  'bins/createBin',
+  async() => {
+    const data = await apiClient.createBin();
+    return data
+  }
+)
+
 export const deleteBin = createAsyncThunk(
   'bins/deleteBin',
   async(binId) => {
@@ -30,6 +38,10 @@ const binsSlice = createSlice({
     builder.addCase(deleteBin.fulfilled, (state, action) => {
       const deletedBin = action.payload
       return state.filter(bin => bin.id !== deletedBin.id)
+    })
+    builder.addCase(createBin.fulfilled, (state, action) => {
+      const createdBin = action.payload
+      return state.concat(createdBin)
     })
   }
 })

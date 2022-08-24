@@ -2,12 +2,20 @@ import * as React from 'react';
 import { useState } from "react";
 import { Button } from '@mui/material';
 
-// import Typography from '@mui/material/Typography';
+import { useDispatch } from "react-redux"
+import { createBin } from '../features/bins';
+
 import Title from './Title';
 
 const CreateBinsContainer = () => {
+  const dispatch = useDispatch();
+
   const [ clickStatus, setClickStatus ] = useState(false);
 
+  const handleCreateBin = () => {
+    setClickStatus(true);
+    dispatch(createBin())
+  }
 
 
   return (
@@ -15,7 +23,7 @@ const CreateBinsContainer = () => {
       <Title>Create New Bin</Title>
       <Button 
         variant="contained"
-        onClick={() => setClickStatus(true)}
+        onClick={() => handleCreateBin()}
       >
         Generate!
       </Button>
@@ -26,9 +34,9 @@ const CreateBinsContainer = () => {
 
 }
 
-const BinCreatedSuccessfully = () => {
+const BinCreatedSuccessfully = (newBin) => {
   return (
-    <div align="center">Bin Successfully Created!</div>
+    <div align="center">{`New Bin Created!`}</div>
   )
 }
 
