@@ -2,7 +2,7 @@
 GET http://localhost:3000/api/bins HTTP/1.1
 
 ### Creates a Request
-POST http://localhost:3000/api/bins/disciplinary_lime_spoonbill HTTP/1.1
+POST http://localhost:3000/api/bins/resident_amaranth_woodpecker HTTP/1.1
 content-type: application/json
 
 {

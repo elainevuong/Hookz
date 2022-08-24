@@ -21,9 +21,6 @@ const RequestSchema = new Schema(
     body: {
       type: Object,
     },
-    // raw: {
-    //   type: Object,
-    // },
   },
   { timestamps: true }
 );

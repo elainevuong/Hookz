@@ -5,10 +5,10 @@ POST http://localhost:3000/api/bins HTTP/1.1
 GET http://localhost:3000/api/bins HTTP/1.1
 
 ### Gets Bin By Id
-GET http://localhost:3000/api/bins/63055364e0810388f2118f83 HTTP/1.1
+GET http://localhost:3000/api/bins/63056c2683383b3fc30fe5e4 HTTP/1.1
 
 ### Deletes Bin By Id
-DELETE http://localhost:3000/api/bins/630568663749ecbcf038a4a5 HTTP/1.1
+DELETE http://localhost:3000/api/bins/63056c3983383b3fc30fe5ee HTTP/1.1
 
 ### Deletes All Bins
 DELETE http://localhost:3000/api/bins HTTP/1.1
