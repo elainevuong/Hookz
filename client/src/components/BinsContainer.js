@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material';
 import Title from './Title';
 
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchBins } from '../features/bins';
+import { fetchBins, deleteBin } from '../features/bins';
 
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { red } from '@mui/material/colors';
@@ -14,11 +14,16 @@ const BinsContainer = () => {
 
   const bins = useSelector(state => state.bins)
 
+  const handleDeleteBin = (bin) => {
+    if (window.confirm(`Are you sure you want to delete bin: ${bin.url}?`)) {
+      dispatch(deleteBin(bin.id))
+    }
+  }
+
   useEffect(() => {
     dispatch(fetchBins())
   }, [dispatch])
 
-  console.log(bins)
   return (
     <React.Fragment>
       <Title>Display All Bins</Title>
@@ -28,7 +33,7 @@ const BinsContainer = () => {
             <TableRow>
               <TableCell>Title</TableCell>
               <TableCell>Number of Requests</TableCell>
-              <TableCell>Delete</TableCell>
+              <TableCell align="center">Delete</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -36,7 +41,13 @@ const BinsContainer = () => {
               <TableRow key={bin.id}>
                 <TableCell>{bin.url}</TableCell>
                 <TableCell align='justify'>{bin.requests.length}</TableCell>
-                <TableCell><DeleteForeverIcon sx={{ color: red[500] }}/></TableCell>
+                <TableCell align="center">
+                  <Button onClick={() => handleDeleteBin(bin)}>
+                  <DeleteForeverIcon 
+                    sx={{ color: red[500] }}
+                  />
+                  </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

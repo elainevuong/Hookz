@@ -7,7 +7,7 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import SendIcon from '@mui/icons-material/Send';
 
 
-export const Sidebar = (
+const Sidebar = (
   <React.Fragment>
     <ListItemButton>
       <ListItemIcon>
@@ -30,3 +30,5 @@ export const Sidebar = (
     </ListItemButton>
   </React.Fragment>
 );
+
+export default Sidebar

@@ -17,9 +17,10 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { Sidebar } from './Sidebar';
+
+import Sidebar from './Sidebar';
 import BinsContainer from './BinsContainer';
-import Deposits from './Deposits';
+import CreateBinsContainer from './CreateBinsContainer';
 import Orders from './Orders';
 
 function Copyright(props) {
@@ -183,7 +184,7 @@ function DashboardContent() {
                     height: 240,
                   }}
                 >
-                  <Deposits />
+                  <CreateBinsContainer />
                 </Paper>
               </Grid>
               {/* Recent Orders */}

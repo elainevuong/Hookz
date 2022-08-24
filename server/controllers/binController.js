@@ -41,7 +41,7 @@ const deleteBin = (req, res, next) => {
     .then(() => {
       // Deletes the Bin
       Bin.findByIdAndRemove(binId)
-        .then(bin => res.json(`Successfully Deleted Bin: ${bin.url}`))
+        .then(bin => res.json(bin))
     })
     .catch((err) => next(err));
 };

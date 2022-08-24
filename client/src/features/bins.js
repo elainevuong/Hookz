@@ -9,6 +9,14 @@ export const fetchBins = createAsyncThunk(
   }
 )
 
+export const deleteBin = createAsyncThunk(
+  'bins/deleteBin',
+  async(binId) => {
+    const data = await apiClient.deleteBin(binId);
+    return data
+  }
+)
+
 const initialState = [];
 
 const binsSlice = createSlice({
@@ -18,6 +26,10 @@ const binsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchBins.fulfilled, (state, action) => {
       return action.payload
+    })
+    builder.addCase(deleteBin.fulfilled, (state, action) => {
+      const deletedBin = action.payload
+      return state.filter(bin => bin.id !== deletedBin.id)
     })
   }
 })
