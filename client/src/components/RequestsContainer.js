@@ -46,7 +46,7 @@ const RequestsContainer = () => {
             <TableRow key={request.id}>
               <TableCell>{formattedDate}</TableCell>
               <TableCell>{request.method}</TableCell>
-              <TableCell>{`http://localhost:3001/api/bins/${request.url}`}</TableCell>
+              <TableCell>{generateURL(request.url)}</TableCell>
             </TableRow>
             )
           })}
@@ -54,6 +54,11 @@ const RequestsContainer = () => {
       </Table>
     </React.Fragment>
   );
+}
+
+const generateURL = (url) => {
+  let URL = `${window.location.protocol}//${window.location.hostname}/api/bins/${url}`
+  return URL
 }
 
 export default RequestsContainer

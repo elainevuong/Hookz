@@ -15,8 +15,6 @@ import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-// import Badge from '@mui/material/Badge';
-// import NotificationsIcon from '@mui/icons-material/Notifications';
 
 import Sidebar from './Sidebar';
 import BinsContainer from './BinsContainer';
@@ -28,7 +26,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Hookz
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -121,13 +119,8 @@ function DashboardContent() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Request Bin
+              Hookz
             </Typography>
-            {/* <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
