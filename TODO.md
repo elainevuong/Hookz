@@ -8,7 +8,7 @@ Request Container
 - when there are no Requests, display a message
 
 Create Bin
-- generate a 'Copy' Link button
+- [X] generate a 'Copy' Link button
 
 Single Bin Display View
 - render Single Display View for Bin

@@ -26,7 +26,8 @@ const BinsContainer = ({ setClickStatus }) => {
 
   const handleGetBinUrl = (bin) => {
     setOpen(true)
-    navigator.clipboard.writeText(`${window.location.toString()}${bin.url}`)
+    let URL = `${window.location.protocol}//${window.location.hostname}/api/bins/${bin.url}`
+    navigator.clipboard.writeText(URL)
   }
 
   // return (

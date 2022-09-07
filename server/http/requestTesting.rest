@@ -10,6 +10,15 @@ content-type: application/json
     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
 }
 
+### Testing with Ngrok
+POST https://01d6-135-0-152-132.ngrok.io/api/bins/uniform_olive_puffin HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}
+
 ### Gets All Requests For a Bin
 GET http://localhost:3001/api/bins/requests/polite_silver_magpie HTTP/1.1
 

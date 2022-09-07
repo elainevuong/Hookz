@@ -2,11 +2,11 @@ import { Button, Snackbar } from '@mui/material'
 import { useState } from 'react'
 
 const CopyURLButton = ({ binurl }) => {
-
   const [open, setOpen] = useState(false)
   const handleClick = () => {
     setOpen(true)
-    navigator.clipboard.writeText(`${window.location.toString()}${binurl}`)
+    let URL = `${window.location.protocol}//${window.location.hostname}/api/bins/${binurl}`
+    navigator.clipboard.writeText(URL)
   }
 
   return (
