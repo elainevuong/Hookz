@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { createBin } from '../features/bins';
 
 import Title from './Title';
+import CopyURLButton from './CopyURLButton';
 
 
 const CreateBinsContainer = ({ setClickStatus, clickStatus }) => {
@@ -42,7 +43,8 @@ const BinCreatedSuccessfully = () => {
           <Typography align='center'><b>{`${bins[0].url}`}</b> created!</Typography>
           <br/>
         </Container>
-        <Button variant="outlined">Copy Bin URL</Button>
+        <CopyURLButton binurl={bins[0].url}></CopyURLButton>
+        {/* <Button variant="outlined">Copy Bin URL</Button> */}
       </React.Fragment>
     )
   }
