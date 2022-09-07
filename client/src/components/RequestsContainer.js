@@ -20,7 +20,6 @@ const RequestsContainer = () => {
     dispatch(fetchRequests())
   }, [dispatch])
 
-  console.log(requests);
   return (
     <React.Fragment>
       <Title>Recent Requests</Title>
