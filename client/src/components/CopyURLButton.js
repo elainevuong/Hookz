@@ -19,7 +19,7 @@ const CopyURLButton = ({ binurl }) => {
         open={open}
         onClose={() => setOpen(false)}
         autoHideDuration={2000}
-        message="Copied Bin URL to clipboard"
+        message="COPIED BIN URL TO CLIPBOARD"
       />
     </>
   )

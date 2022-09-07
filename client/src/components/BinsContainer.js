@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Container, TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Button, Typography } from '@mui/material';
+import { Container, TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Button, Typography, Snackbar } from '@mui/material';
 import Title from './Title';
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchBins, deleteBin } from '../features/bins';
 
+import LinkIcon from '@mui/icons-material/Link';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { red } from '@mui/material/colors';
 
@@ -20,6 +21,32 @@ const BinsContainer = ({ setClickStatus }) => {
       setClickStatus(false)
     }
   }
+
+  const [open, setOpen] = useState(false)
+
+  const handleGetBinUrl = (bin) => {
+    setOpen(true)
+    navigator.clipboard.writeText(`${window.location.toString()}${bin.url}`)
+  }
+
+  // return (
+  //   <>
+  //     <Button 
+  //       variant="outlined"
+  //       onClick={handleClick}
+  //     >Copy Bin URL</Button>
+  //     <Snackbar
+  //       open={open}
+  //       onClose={() => setOpen(false)}
+  //       autoHideDuration={2000}
+  //       message="Copied Bin URL to clipboard"
+  //     />
+
+
+  // const handleGetBinUrl = (bin) {
+  //   navigator.clipboard.writeText(`${window.location.toString()}${binurl}`)
+
+  // }
 
   useEffect(() => {
     dispatch(fetchBins())
@@ -36,6 +63,7 @@ const BinsContainer = ({ setClickStatus }) => {
                 <TableCell>Title</TableCell>
                 <TableCell>Number of Requests</TableCell>
                 <TableCell>Delete</TableCell>
+                <TableCell>Get Bin URL</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -49,6 +77,17 @@ const BinsContainer = ({ setClickStatus }) => {
                       sx={{ color: red[500] }}
                     />
                     </Button>
+                  </TableCell>
+                  <TableCell>
+                    <Button onClick={() => handleGetBinUrl(bin)}>
+                      <LinkIcon />
+                      <Snackbar
+                        open={open}
+                        onClose={() => setOpen(false)}
+                        autoHideDuration={1000}
+                        message="COPIED BIN URL TO CLIPBOARD"
+                      />
+                    </Button>  
                   </TableCell>
                 </TableRow>
               ))}
