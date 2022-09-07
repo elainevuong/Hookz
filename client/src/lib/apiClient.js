@@ -20,5 +20,10 @@ const fetchRequests = async () => {
   return response.data;
 }
 
-const apiClient = { fetchBins, deleteBin, createBin, fetchRequests }
+const fetchRequestsByBin = async (binUrl) => {
+  const response = await axios.get(`/api/bins/requests/${binUrl}`)
+  return response.data;
+}
+
+const apiClient = { fetchBins, deleteBin, createBin, fetchRequests, fetchRequestsByBin }
 export default apiClient

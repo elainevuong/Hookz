@@ -10,10 +10,16 @@ import LinkIcon from '@mui/icons-material/Link';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { red } from '@mui/material/colors';
 
+import BinModal from './BinModal';
+
 const BinsContainer = ({ setClickStatus }) => {
   const dispatch = useDispatch();
 
   const bins = useSelector(state => state.bins)
+
+  useEffect(() => {
+    dispatch(fetchBins())
+  }, [dispatch])
 
   const handleDeleteBin = (bin) => {
     if (window.confirm(`Are you sure you want to delete bin: ${bin.url}?`)) {
@@ -29,29 +35,6 @@ const BinsContainer = ({ setClickStatus }) => {
     let URL = `${window.location.protocol}//${window.location.hostname}/api/bins/${bin.url}`
     navigator.clipboard.writeText(URL)
   }
-
-  // return (
-  //   <>
-  //     <Button 
-  //       variant="outlined"
-  //       onClick={handleClick}
-  //     >Copy Bin URL</Button>
-  //     <Snackbar
-  //       open={open}
-  //       onClose={() => setOpen(false)}
-  //       autoHideDuration={2000}
-  //       message="Copied Bin URL to clipboard"
-  //     />
-
-
-  // const handleGetBinUrl = (bin) {
-  //   navigator.clipboard.writeText(`${window.location.toString()}${binurl}`)
-
-  // }
-
-  useEffect(() => {
-    dispatch(fetchBins())
-  }, [dispatch])
 
   if (bins.length > 0) {
     return (
@@ -70,7 +53,9 @@ const BinsContainer = ({ setClickStatus }) => {
             <TableBody>
               {bins.map(bin => (
                 <TableRow key={bin.id}>
-                  <TableCell>{bin.url}</TableCell>
+                  <TableCell>
+                    <BinModal bin={bin}/>
+                  </TableCell>
                   <TableCell>{bin.requests.length}</TableCell>
                   <TableCell>
                     <Button onClick={() => handleDeleteBin(bin)}>

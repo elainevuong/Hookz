@@ -20,7 +20,10 @@ content-type: application/json
 }
 
 ### Gets All Requests For a Bin
-GET http://localhost:3001/api/bins/requests/polite_silver_magpie HTTP/1.1
+GET http://localhost:3001/api/bins/requests/uniform_olive_puffin HTTP/1.1
+
+### Gets All Requests For a Bin - Ngrok
+GET https://01d6-135-0-152-132.ngrok.io/api/bins/requests/uniform_olive_puffin HTTP/1.1
 
 ### Gets All Requests
 GET http://localhost:3001/api/requests HTTP/1.1
