@@ -1,4 +1,4 @@
-# Hookz - Request Bin Clone
+# Hookz - Debugging Webhooks
 
 ## Background
 The purpose of building this application was to build a tool in order to test and debug webhooks. 
